@@ -15,7 +15,7 @@ class ArticleListViewModel @Inject constructor(
 ) : ViewModel() {
     private var searchQuery = MutableLiveData("")
 
-    private val pageSize = 5
+    private val pageSize = 10
 
     fun updateSearchQuery(query:String){
         searchQuery.value = query

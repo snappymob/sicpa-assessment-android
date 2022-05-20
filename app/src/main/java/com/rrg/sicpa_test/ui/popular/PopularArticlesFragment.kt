@@ -11,9 +11,7 @@ import com.rrg.sicpa_test.R
 import com.rrg.sicpa_test.core.State
 import com.rrg.sicpa_test.databinding.FragmentPopularBinding
 import com.rrg.sicpa_test.models.keys.HomeKeys
-import com.rrg.sicpa_test.models.primary.Article
 import com.rrg.sicpa_test.models.primary.ArticleSearch
-import com.rrg.sicpa_test.models.primary.Results
 import com.rrg.sicpa_test.ui.MainActivity
 import com.rrg.sicpa_test.utils.DateTimeFormatter
 import dagger.hilt.android.AndroidEntryPoint

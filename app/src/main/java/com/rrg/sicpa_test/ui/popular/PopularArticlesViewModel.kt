@@ -3,8 +3,6 @@ package com.rrg.sicpa_test.ui.popular
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rrg.sicpa_test.models.primary.Results
-import com.rrg.sicpa_test.core.Result
 import com.rrg.sicpa_test.core.State
 import com.rrg.sicpa_test.models.keys.ArticleTypes
 import com.rrg.sicpa_test.models.keys.HomeKeys

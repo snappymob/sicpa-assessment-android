@@ -29,10 +29,10 @@ class ApiService @Inject constructor(
         }
     }
 
-    fun getPagedNewsArticles(searchQuery: String, pageSize:Int) = Pager(
+    override fun getPagedNewsArticles(searchQuery: String, pageSize:Int) = Pager(
         config = PagingConfig(
             pageSize = pageSize,
-            prefetchDistance = pageSize * 1
+            prefetchDistance = pageSize * 2
         ),
         pagingSourceFactory = { ArticleListPagingSource(api, searchQuery) }
     ).liveData

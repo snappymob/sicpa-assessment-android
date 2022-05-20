@@ -1,6 +1,5 @@
 package com.rrg.sicpa_test.ui.article_list
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
