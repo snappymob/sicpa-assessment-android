@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">sicpa-test</string>
+    <string name="expand_menu">Expand Menu</string>
+    <string name="search_articles">Search Articles</string>
+    <string name="most_viewed">Most Viewed</string>
+    <string name="most_shared">Most Shared</string>
+    <string name="most_emailed">Most Emailed</string>
+    <string name="search">Search</string>
+    <string name="popular">Popular</string>
+    <string name="new_york_times">New York Times</string>
+    <string name="search_hint">Search…</string>
+    <string name="retry_label">Retry</string>
+    <string name="error_could_not_fetch_data">Error, could not fetch data</string>
+    <string name="you_are_offline">You\'re offline !</string>
+    <string name="please_connect_to_an_internet_enabled_network">Please connect to an internet enabled network</string>
+    <string name="error">Error !</string>
+    <string name="an_error_occurred_trying_to_fetch_the_data">An error occurred trying to fetch the data</string>
+</resources>

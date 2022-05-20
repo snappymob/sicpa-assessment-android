@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.rrg.sicpa_test.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_articleListFragment"
+            app:destination="@id/articleListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_popularArticlesFragment"
+            app:destination="@id/popularArticlesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleListFragment"
+        android:name="com.rrg.sicpa_test.ui.article_list.ArticleListFragment"
+        android:label="fragment_article_list"
+        tools:layout="@layout/fragment_article_list" />
+
+    <fragment
+        android:id="@+id/popularArticlesFragment"
+        android:name="com.rrg.sicpa_test.ui.popular.PopularArticlesFragment"
+        android:label="fragment_popular"
+        tools:layout="@layout/fragment_popular" >
+        <argument
+            android:name="articleListType"
+            app:argType=".models.keys.HomeKeys" />
+    </fragment>
+
+</navigation>
