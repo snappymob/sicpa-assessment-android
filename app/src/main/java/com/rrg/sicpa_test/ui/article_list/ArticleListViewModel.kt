@@ -1,10 +1,9 @@
 package com.rrg.sicpa_test.ui.article_list
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.rrg.sicpa_test.models.primary.Article
 import com.rrg.sicpa_test.service.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,6 +21,10 @@ class ArticleListViewModel @Inject constructor(
     }
 
     val pagedArticles = searchQuery.switchMap { currentQuery ->
-        apiService.getPagedNewsArticles(currentQuery,pageSize).cachedIn(viewModelScope)
+        fetchNewsArticles(currentQuery).cachedIn(viewModelScope)
+    }
+
+    fun fetchNewsArticles(currentQuery: String): LiveData<PagingData<Article>> {
+        return apiService.getPagedNewsArticles(currentQuery,pageSize)
     }
 }

@@ -40,7 +40,7 @@ class ViewModelUnitTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var popularArticlesViewModel: PopularArticlesViewModel
-    private lateinit var articlesViewModel: ArticleListViewModel
+    private lateinit var articlesListViewModel: ArticleListViewModel
     private lateinit var apiService: ApiService
     private lateinit var api: Api
     private lateinit var pagingSource: ArticleListPagingSource
@@ -50,7 +50,7 @@ class ViewModelUnitTest {
         apiService = Mockito.mock(ApiService::class.java)
         api = Mockito.mock((Api::class.java))
         popularArticlesViewModel = PopularArticlesViewModel(apiService)
-        articlesViewModel = ArticleListViewModel(apiService)
+        articlesListViewModel = ArticleListViewModel(apiService)
         pagingSource = ArticleListPagingSource(api, "")
     }
 
@@ -130,6 +130,21 @@ class ViewModelUnitTest {
         }
         advanceUntilIdle()
         Mockito.verify(apiService, times(1)).searchPopularArticles(ArticleTypes.viewed, TimePeriodKeys.Thirty)
+        Mockito.verify(apiService, times(0)).searchNewsArticles("", 1)
+        Mockito.verify(apiService, times(0)).getPagedNewsArticles("test", 1)
+    }
+
+    @Test
+    fun `calling service methods for searching articles`() = runTest {
+        `when`(apiService.searchPopularArticles(any(), any())).thenReturn(
+            Result.Failure(AppError(AppError.Code.ServerError))
+        )
+        articlesListViewModel.apply {
+            fetchNewsArticles("test")
+        }
+        advanceUntilIdle()
+        Mockito.verify(apiService, times(1)).getPagedNewsArticles("test", 10)
+        Mockito.verify(apiService, times(0)).searchPopularArticles(ArticleTypes.viewed, TimePeriodKeys.Thirty)
         Mockito.verify(apiService, times(0)).searchNewsArticles("", 1)
     }
 }
