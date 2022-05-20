@@ -50,6 +50,7 @@ class PopularArticlesFragment : Fragment(R.layout.fragment_popular), Observer<St
             dataLoadingPlaceholderView.onRetry = {viewModel.proceedToLoad()}
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = adapter
+            recyclerView.setHasFixedSize(true)
 
             swipeToRefreshLayout.setOnRefreshListener {
                 viewModel.proceedToLoad()

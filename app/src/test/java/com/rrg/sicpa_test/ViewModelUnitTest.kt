@@ -1,7 +1,6 @@
 package com.rrg.sicpa_test
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.paging.PagingSource
 import com.rrg.sicpa_test.api.Api
 import com.rrg.sicpa_test.core.AppError
 import com.rrg.sicpa_test.core.Result
@@ -16,19 +15,15 @@ import com.rrg.sicpa_test.ui.article_list.ArticleListViewModel
 import com.rrg.sicpa_test.ui.popular.PopularArticlesViewModel
 import com.rrg.sicpa_test.utils.processNetworkResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.*
-import org.junit.After
-import org.junit.Assert.*
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.any
 import org.mockito.kotlin.times
-import retrofit2.Response
 
 @ExperimentalCoroutinesApi
 class ViewModelUnitTest {
@@ -47,14 +42,16 @@ class ViewModelUnitTest {
     private lateinit var popularArticlesViewModel: PopularArticlesViewModel
     private lateinit var articlesViewModel: ArticleListViewModel
     private lateinit var apiService: ApiService
+    private lateinit var api: Api
     private lateinit var pagingSource: ArticleListPagingSource
 
     @Before
     fun init(){
         apiService = Mockito.mock(ApiService::class.java)
+        api = Mockito.mock((Api::class.java))
         popularArticlesViewModel = PopularArticlesViewModel(apiService)
         articlesViewModel = ArticleListViewModel(apiService)
-        pagingSource = ArticleListPagingSource(apiService, "")
+        pagingSource = ArticleListPagingSource(api, "")
     }
 
     @Test
@@ -134,16 +131,5 @@ class ViewModelUnitTest {
         advanceUntilIdle()
         Mockito.verify(apiService, times(1)).searchPopularArticles(ArticleTypes.viewed, TimePeriodKeys.Thirty)
         Mockito.verify(apiService, times(0)).searchNewsArticles("", 1)
-    }
-
-    @Test
-    fun `calling service methods for searching articles`() = runTest {
-        `when`(apiService.searchNewsArticles(any(), any())).thenReturn(
-            Response.success(mockData)
-        )
-        pagingSource.apiService.searchNewsArticles("",1)
-        advanceUntilIdle()
-        Mockito.verify(apiService, times(1)).searchNewsArticles("", 1)
-        Mockito.verify(apiService, times(0)).searchPopularArticles(ArticleTypes.viewed, TimePeriodKeys.Thirty)
     }
 }
