@@ -15,5 +15,5 @@
     <string name="please_connect_to_an_internet_enabled_network">Please connect to an internet enabled network</string>
     <string name="error">Error !</string>
     <string name="an_error_occurred_trying_to_fetch_the_data">An error occurred trying to fetch the data</string>
-    <string name="no_news_found" translatable="false">No News Found, Please search Again</string>
+    <string name="no_news_found">No News Found, Please search Again</string>
 </resources>
