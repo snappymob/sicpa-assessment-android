@@ -1,5 +1,8 @@
 package com.rrg.sicpa_test.service
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.liveData
 import com.rrg.sicpa_test.api.Api
 import com.rrg.sicpa_test.core.NetworkRequestManager
 import com.rrg.sicpa_test.core.Result
@@ -25,4 +28,12 @@ class ApiService @Inject constructor(
             api.getPopularArticles(articleType.name, timePeriod.value.toString())
         }
     }
+
+    fun getPagedNewsArticles(searchQuery: String, pageSize:Int) = Pager(
+        config = PagingConfig(
+            pageSize = pageSize,
+            prefetchDistance = pageSize * 1
+        ),
+        pagingSourceFactory = { ArticleListPagingSource(api, searchQuery) }
+    ).liveData
 }

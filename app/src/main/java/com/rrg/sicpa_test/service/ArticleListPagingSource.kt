@@ -6,7 +6,7 @@ import com.rrg.sicpa_test.api.Api
 import com.rrg.sicpa_test.models.primary.Article
 
 class ArticleListPagingSource(
-    val apiService: ApiService,
+    private val api: Api,
     private val searchQuery: String
 ) : PagingSource<Int, Article>() {
 
@@ -18,19 +18,23 @@ class ArticleListPagingSource(
         val position = params.key ?: START_INDEX
 
         try {
-            val response = apiService.searchNewsArticles(searchQuery,position).body()!!.response!!.docs
-            return LoadResult.Page(
-                data = response,
-                prevKey = null, // Only paging forward.
-                nextKey = if (response.isEmpty()) {
-                    null
-                } else {
-                    position + 1
-                }
-            )
+            val response = api.searchArticles(searchQuery,position)
+            if(response.isSuccessful){
+                val data = response.body()?.response?.docs
+                return LoadResult.Page(
+                    data = data ?: arrayListOf(),
+                    prevKey = null, // Only paging forward.
+                    nextKey = if (data.isNullOrEmpty()) {
+                        null
+                    } else {
+                        position + 1
+                    }
+                )
+            }else{
+                throw Exception()
+            }
         } catch (e: Exception) {
-            // Handle errors in this block and return LoadResult.Error if it is an
-            // expected error (such as a network failure).
+            // Catach errors here.
             return LoadResult.Error(e)
         }
     }

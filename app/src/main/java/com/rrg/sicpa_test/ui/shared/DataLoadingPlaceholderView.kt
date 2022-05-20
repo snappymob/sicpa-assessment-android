@@ -28,7 +28,6 @@ class DataLoadingPlaceholderView: ConstraintLayout {
         binding.apply {
             retryButton.setOnClickListener {
                 onRetry?.invoke()
-                onLoading()
             }
         }
     }

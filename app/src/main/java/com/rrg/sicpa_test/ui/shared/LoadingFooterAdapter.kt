@@ -2,7 +2,6 @@ package com.rrg.sicpa_test.ui.shared
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
@@ -24,8 +23,8 @@ class LoadingFooterAdapter(private val retry:() ->Unit): LoadStateAdapter<Loadin
 
         fun bind(loadState: LoadState){
             binding.apply {
-                errorTextView.isVisible = loadState is LoadState.Error
-                retryButton.isVisible = loadState is LoadState.Error
+                errorTextView.isVisible = loadState !is LoadState.Loading
+                retryButton.isVisible = loadState !is LoadState.Loading
                 progressBar.isVisible = loadState is LoadState.Loading
 
                 retryButton.setOnClickListener {
