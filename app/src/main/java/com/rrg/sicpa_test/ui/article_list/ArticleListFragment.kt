@@ -59,7 +59,7 @@ class ArticleListFragment: Fragment(R.layout.fragment_article_list) {
             dataLoadingPlaceholderView.onRetry = {adapter.refresh()}
             // Need to map some paging 3 states to the project's states.
             adapter.addLoadStateListener { loadState ->
-                dataLoadingPlaceholderView.isVisible = loadState.refresh is LoadState.Loading
+                //dataLoadingPlaceholderView.isVisible = loadState.refresh is LoadState.Loading
                 if (loadState.refresh is LoadState.NotLoading) {
                     dataLoadingPlaceholderView.isGone = true
                 }
