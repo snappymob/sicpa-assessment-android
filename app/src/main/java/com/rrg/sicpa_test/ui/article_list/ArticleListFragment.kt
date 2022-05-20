@@ -74,8 +74,7 @@ class ArticleListFragment: Fragment(R.layout.fragment_article_list) {
             }
 
             swipeToRefreshLayout.setOnRefreshListener {
-                //dataLoadingPlaceholderView.bind(State.Loading)
-                adapter.retry()
+                adapter.refresh()
                 swipeToRefreshLayout.isRefreshing = false
             }
         }
