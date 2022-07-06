@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.sicpa_assessment_android.ui.home.HomeFragment"
+        android:label="@string/new_york_times_title"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_mostViewedArticleFragment"
+            app:destination="@id/mostViewedArticleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mostSharedArticleFragment"
+            app:destination="@id/mostSharedArticleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mostEmailedArticleFragment"
+            app:destination="@id/mostEmailedArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostViewedArticleFragment"
+        android:name="com.example.sicpa_assessment_android.ui.most_viewed.MostViewedArticleFragment"
+        android:label="MostViewedArticleFragment" />
+    <fragment
+        android:id="@+id/mostSharedArticleFragment"
+        android:name="com.example.sicpa_assessment_android.ui.most_shared.MostSharedArticleFragment"
+        android:label="MostSharedArticleFragment" />
+    <fragment
+        android:id="@+id/mostEmailedArticleFragment"
+        android:name="com.example.sicpa_assessment_android.ui.most_emailed.MostEmailedArticleFragment"
+        android:label="MostEmailedArticleFragment" />
+</navigation>

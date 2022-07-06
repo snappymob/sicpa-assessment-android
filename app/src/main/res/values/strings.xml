@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">sicpa-assessment-android</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Home fragment -->
+    <string name="new_york_times_title">New York Times</string>
+    <string name="search_label">Search</string>
+    <string name="search_articles_label">Search Articles</string>
+    <string name="popular_label">Popular</string>
+    <string name="most_viewed_label">Most Viewed</string>
+    <string name="most_shared_label">Most Shared</string>
+    <string name="most_emailed_label">Most Emailed</string>
+
+    <!-- Search fragment -->
+    <string name="search_articles_title">Search Articles</string>
+    <string name="you_are_offline_label">You\'re offline!</string>
+    <string name="offline_instruction_label">Please connect to an internet enabled network</string>
+    <string name="search_hint_label">Search...</string>
+    <string name="error_generic_title">Oops! Something went wrong</string>
+    <string name="error_generic_description">Please try again later.</string>
+    <string name="retry_prompt">Try again</string>
 </resources>
